@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+">
+
+    <util:list id="heroList">
+        <ref bean="hero1"></ref>
+        <ref bean="hero2"></ref>
+    </util:list>
+
+    <bean id="camps" class="com.ys.ioc.entity.Camps">
+        <property name="name" value="德玛西亚"></property>
+        <property name="herosList" ref="heroList"></property>
+    </bean>
+
+    <bean id="hero1" class="com.ys.ioc.entity.Heros">
+        <property name="name" value="盖伦"></property>
+        <property name="weapon" value="暴风大剑"></property>
+    </bean>
+    <bean id="hero2" class="com.ys.ioc.entity.Heros">
+        <property name="name" value="拉克丝"></property>
+        <property name="weapon" value="法杖"></property>
+    </bean>
+
+    <bean id="factoryBean" class="com.ys.ioc.entity.MyBean"></bean>
+
+    <bean id="heroAttribute" class="com.ys.ioc.entity.HeroAttribute" init-method="initMethod" destroy-method="destoryMethod">
+        <property name="healthPoint" value="700"></property>
+        <property name="magicPoint" value="400"></property>
+    </bean>
+
+    <bean id="myBeanPost" class="com.ys.ioc.entity.MyBeanPost"></bean>
+</beans>

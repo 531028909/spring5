@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.ys.ioc.entity.User" >
+        <!--<property name="name" value="zhangsan"></property>-->
+        <!--<constructor-arg name="name" value="zhangsan"></constructor-arg>-->
+        <!--<property name="name">
+            <null></null>
+        </property>-->
+        <property name="name">
+            <value><![CDATA[<<南京>>]]></value>
+        </property>
+    </bean>
+
+    <bean id="userService" class="com.ys.ioc.service.UserService">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="userDao" class="com.ys.ioc.dao.UserDaoImpl"></bean>
+
+    <bean id="employee" class="com.ys.ioc.entity.Employee">
+        <property name="name" value="张三"></property>
+        <property name="address" value="云南省"></property>
+        <property name="department" ref="department"></property>
+        <property name="department.name" value="财务部"></property>
+    </bean>
+
+    <bean id="department" class="com.ys.ioc.entity.Department">
+        <property name="name" value="人事部"></property>
+    </bean>
+
+    <bean id="collectionBean" class="com.ys.ioc.entity.CollectionBean">
+        <property name="stringNames">
+            <array>
+                <value>JAVA</value>
+                <value>MYSQL</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>zhangsan</value>
+                <value>lisi</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="德玛西亚" value="盖伦"></entry>
+                <entry key="诺克萨斯" value="德莱厄斯"></entry>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>祖安</value>
+                <value>皮尔特沃夫</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="camps" class="com.ys.ioc.entity.Camps">
+        <property name="name" value="德玛西亚"></property>
+        <property name="herosList">
+            <list>
+                <ref bean="hero1"></ref>
+                <ref bean="hero2"></ref>
+            </list>
+        </property>
+    </bean>
+    <bean id="hero1" class="com.ys.ioc.entity.Heros">
+        <property name="name" value="盖伦"></property>
+        <property name="weapon" value="暴风大剑"></property>
+    </bean>
+    <bean id="hero2" class="com.ys.ioc.entity.Heros">
+        <property name="name" value="拉克丝"></property>
+        <property name="weapon" value="法杖"></property>
+    </bean>
+</beans>
